@@ -1,10 +1,13 @@
 using NgGold.Interface;
+
 namespace NgGold.Repository
 {
 
 
     public class PasswordHash : IPasswordHash
     {
+
+
 
         public bool compareHash(string plainPassword, string hashedPassword)
         {

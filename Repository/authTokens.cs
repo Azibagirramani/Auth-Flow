@@ -23,8 +23,8 @@ namespace NgGold.Auth.Token
 
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub, ""),
-            new Claim(JwtRegisteredClaimNames.Email, "kelvinmansi2@gmail.com"),
+            new Claim(JwtRegisteredClaimNames.Sub, Convert.ToString(users.Id)),
+            new Claim(JwtRegisteredClaimNames.Email, Convert.ToString(users.Email)),
             };
 
             var token = new JwtSecurityToken(
