@@ -35,10 +35,9 @@ namespace NgGold.Repository
             try
             {
                 var user = await _context.User.FindAsync(userId);
-                Console.WriteLine(user.Id);
                 if (user == null)
                 {
-
+                    throw new("User not found");
                 }
                 return user;
             }

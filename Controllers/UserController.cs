@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using NgGold.Models;
 using NgGold.Dto;
 using NgGold.Interface;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Security.Claims;
 
 namespace NgGold.Controllers;
@@ -28,14 +27,12 @@ public class UserController : ControllerBase
     }
     [HttpGet("/current")]
     [Authorize(Roles = "2")]
-    public IActionResult GetAllUsers()
+    public async Task<IActionResult> GetAllUsers()
     {
-
-
         var identity = HttpContext.User.Identity as ClaimsIdentity;
         var user_id = identity?.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-        Console.WriteLine(_userRepository.FindById(Guid.Parse(user_id)));
-        return Ok();
+        var user = await _userRepository.FindById(Guid.Parse(user_id));
+        return Ok(user);
     }
 
     [HttpPost("/register")]

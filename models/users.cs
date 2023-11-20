@@ -36,5 +36,7 @@ namespace NgGold.Models
 
         [Column("account_status")]
         public int AccountStatus { get; set; } = 0;
+
+        public Business? User_business { get; set; }
     }
 }

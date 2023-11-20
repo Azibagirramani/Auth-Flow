@@ -9,4 +9,7 @@ public class DBContext : DbContext
 
     }
     public DbSet<Users> User { get; set; }
+    public DbSet<Business> Businesses { get; set; }
+
+
 }
